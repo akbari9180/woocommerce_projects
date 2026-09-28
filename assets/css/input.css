@@ -1,0 +1,87 @@
+@import "tailwindcss";
+/* استایل پیش‌فرض تگ‌ها */
+@layer base{
+    
+    @font-face {
+        font-family: "Dana DemiBold";/*600*/
+        src:local("Dana DemiBold"), url(../../fonts/Dana/woff2/DanaFaNum-DemiBold.woff2) format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Dana Medium";/*500*/
+        src:local("Dana Medium"), url(../../fonts/Dana/woff2/DanaFaNum-Medium.woff2) format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Dana";/*400*/
+        src:local("Dana"), url(../../fonts/Dana/woff2/DanaFaNum-Regular.woff2) format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Morabba Bold";
+        src:local("Morabba Bold"), url(../../fonts/Morabba/woff2/Morabba-Bold.woff2) format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Morabba Medium";
+        src:local("Morabba Medium"), url(../../fonts/Morabba/woff2/Morabba-Medium.woff2) format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Morabba Light";
+        src:local("Morabba Light"), url(../../fonts/Morabba/woff2/Morabba-Light.woff2) format("woff2");
+        font-display: swap;
+    }
+    
+}
+@layer components{
+    body{
+        @apply flex flex-col;
+    }
+    .btn{
+      @apply rounded-2xl bg-red-500 px-4 py-1.5 lg:px-6 lg:py-3 text-white cursor-pointer text-sm lg:text-base;
+    }
+    .flex-center{
+        @apply flex items-center justify-center;
+    }
+   
+header{
+    @apply flex-center;
+}
+header nav .menu li a {
+  @apply hover:text-red-500;
+}
+
+header nav .menu{
+   @apply flex flex-col md:flex-row gap-3 *:text-sm md:gap-5.5;
+}
+main{
+    @apply flex-1;
+}
+footer{
+    @apply relative min-h-30 w-full pt-20 pb-5 text-white bg-blue-700;
+}
+footer nav .menu{
+   @apply flex gap-4 flex-col *:text-sm *:text-gray-400 *:flex  *:gap-2;
+}
+footer nav .menu li a{
+    @apply hover:text-red-500;
+}
+}
+/* تعریف utility سفارشی */
+@utility container{
+    @apply mx-auto px-7 lg:px-5;
+}
+/* معمولاً کلاس‌هایی تعریف می‌کنی که یک کار مشخص انجام می‌دهند /هدفش یک قابلیت کوچک و عمومی است.*/
+@layer utilities{
+    .bg-home-desktop{
+        background-image: url(../../images/hiro.jfif);
+        width: 100%;
+        height: auto;
+    }
+   
+
+   
+    
+}
+
