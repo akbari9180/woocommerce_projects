@@ -245,3 +245,15 @@ add_filter('woocommerce_loop_add_to_cart_args',
 //     'woocommerce_product_add_to_cart_text',
 //     'nafas_custom_add_to_cart_text'
 // );
+function nafas_add_text() {
+
+    echo '<p class="text-amber-600 font-bold text-lg mb-4">
+        ضمانت اصالت کالا
+    </p>';
+
+}
+
+add_action(
+    'woocommerce_before_add_to_cart_form',
+    'nafas_add_text'
+);
