@@ -11,7 +11,7 @@
     </style>
 </head>
 <body <?php body_class();?>>
-    <header>
+    <header class="flex-center gap-20">
             <div class='logo'>
                 <!-- متد زیر تگ a , img تولید میکنه -->
                 <?php the_custom_logo();?>

@@ -45,9 +45,6 @@
         @apply flex items-center justify-center;
     }
    
-header{
-    @apply flex-center;
-}
 header nav .menu li a {
   @apply hover:text-red-500;
 }
@@ -66,6 +63,12 @@ footer nav .menu{
 }
 footer nav .menu li a{
     @apply hover:text-red-500;
+}
+.price-shop span{
+@apply text-xs;
+}
+.woocommerce .nafas-add-to-cart{
+    @apply bg-red-600 text-white px-4 py-2 rounded-lg;
 }
 }
 /* تعریف utility سفارشی */

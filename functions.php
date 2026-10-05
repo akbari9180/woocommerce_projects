@@ -1,5 +1,16 @@
+<!-- functions.php
+├── Theme Setup
+├── Menus
+├── Enqueue
+├── Custom Post Types
+├── AJAX
+├── WooCommerce
+│   ├── Warranty
+│   ├── Shipping
+│   └── Product Extra Info
+└── ... -->
 <?php
-
+require_once get_template_directory() . '/inc/woocommerce.php'; 
     //اضافه کردن استایل
     //اضافه کردن فایل خروجی تیلویند(اتصال تیلویند به وردپرس)
 function my_theme_enqueue_styles() {
@@ -28,13 +39,13 @@ function add_option_to_site(){
       add_theme_support('custom-background');
       //پشتیبانی از html5
       add_theme_support('html5');
-    // پشتیبانی از ووکامرس
+    //*************** */ پشتیبانی از ووکامرس
     add_theme_support('woocommerce');
 
 }
 add_action('after_setup_theme','add_option_to_site');
 // Widget Area
-function sadaf_widgets_init() {
+function nafas_widgets_init() {
    //Sidebar 
     register_sidebar(
         array(
@@ -64,5 +75,4 @@ function sadaf_widgets_init() {
 
 }
 
-add_action('widgets_init', 'sadaf_widgets_init');
-
+add_action('widgets_init', 'nafas_widgets_init');
