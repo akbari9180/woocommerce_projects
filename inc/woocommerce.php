@@ -245,6 +245,7 @@ add_filter('woocommerce_loop_add_to_cart_args',
 //     'woocommerce_product_add_to_cart_text',
 //     'nafas_custom_add_to_cart_text'
 // );
+//اضافه کردن اصالت کالا قبل از فرم اضافه به سبد خرید
 function nafas_add_text() {
 
     echo '<p class="text-amber-600 font-bold text-lg mb-4">
@@ -257,3 +258,38 @@ add_action(
     'woocommerce_before_add_to_cart_form',
     'nafas_add_text'
 );
+// checkout , cart از نوع بلاک هستن
+// اضافه کردن فیلد نام پدر به بخش پرداخت یا order در checkout
+add_action( 'woocommerce_init', function() {
+
+    if ( ! function_exists( 'woocommerce_register_additional_checkout_field' ) ) {
+        return;
+    }
+
+    woocommerce_register_additional_checkout_field(
+        array(
+            'id'       => 'my-store/father-name',
+            'label'    => 'نام پدر',
+            'location' => 'order',
+            'type'     => 'text',
+            'required' => true,
+        )
+    );
+
+} );
+//checkout حذف یک فیلد از فیلد های اصلی در 
+// ولی حذف فیلد های اصلی توصیه نمیشود
+
+// add_filter( 'woocommerce_get_country_locale', function( $locale ) {
+
+//     foreach ( $locale as $country_code => $country_fields ) {
+
+//         $locale[ $country_code ]['first_name'] = array(
+//             'required' => false,
+//             'hidden'   => true,
+//         );
+
+//     }
+
+//     return $locale;
+// } );
