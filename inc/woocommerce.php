@@ -293,3 +293,36 @@ add_action( 'woocommerce_init', function() {
 
 //     return $locale;
 // } );
+// تغییر موضوع ایمیل برای سفارش جدید
+// new order برای مدیر ارسال میشه
+// یعنی موضوع یا متن موضوع ایمیلی که برای سفارش جدید میشه رو تغییر میدهد
+function nafas_custom_email_subject($subject, $order) {
+
+    return 'سفارش جدید از سایت صدف';
+
+}
+
+add_filter(
+    'woocommerce_email_subject_new_order',
+    'nafas_custom_email_subject',
+    10,
+    2
+);
+//تغییر لوگو و رنگ و... داخل خود پیکربندی ووکامرس انجام میشود و نیاز به کدنویسی نیس
+// شخصی سازی پیام تشکر
+// woocommerce_thankyou_order_received_textمتن تشکر بعد از ثبت سفارش
+function nafas_custom_thankyou_message(
+    $text,
+    $order
+) {
+
+    return 'از خرید شما از فروشگاه صدف متشکریم. سفارش شما با موفقیت ثبت شد.';
+
+}
+
+add_filter(
+    'woocommerce_thankyou_order_received_text',
+    'nafas_custom_thankyou_message',
+    10,
+    2
+);
