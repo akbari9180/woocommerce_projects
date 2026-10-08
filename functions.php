@@ -13,7 +13,7 @@
 require_once get_template_directory() . '/inc/woocommerce.php'; 
     //اضافه کردن استایل
     //اضافه کردن فایل خروجی تیلویند(اتصال تیلویند به وردپرس)
-function my_theme_enqueue_styles() {
+function nafas_add_assets() {
     wp_enqueue_style(
         'tailwind',
         get_template_directory_uri() . '/assets/css/output.css',
@@ -21,7 +21,7 @@ function my_theme_enqueue_styles() {
     );
 }
 
-add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
+add_action('wp_enqueue_scripts', 'nafas_add_assets');
 function add_option_to_site(){
     //افزودن منو
     register_nav_menus(

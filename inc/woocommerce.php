@@ -326,3 +326,161 @@ add_filter(
     10,
     2
 );
+//میخوایم مشخصات فنی،مزایا و سوالات متداول را برای هر محصول اضافه کنیم
+function nafas_add_other_things(){
+     $technical=get_post_meta(get_the_ID(),'product_technical',true);
+     $benefits=get_post_meta(get_the_ID(),'product_benefits',true);
+     $faq=get_post_meta(get_the_ID(),'product_faq',true);
+?>
+<div>
+    <section class="mt-12">
+        <h2 class="text-red-400 font-bold text-2xl">مشخصات فنی</h2>
+        <?php if($technical):?>
+        <p class="whitespace-pre-line">
+         <?php echo esc_html($technical);?>  
+        </p>
+        <?php else:?>
+            <p>مشخصات فنی محصول درج نگردیده است.</p>
+        <?php endif;?>
+    </section>
+    <section class="mt-12">
+        <h2 class="text-green-400 font-bold text-2xl">مزایا</h2>
+         <?php if($benefits):?>
+        <p class="whitespace-pre-line">
+         <?php echo esc_html($benefits);?>  
+        </p>
+        <?php else:?>
+            <p>مزایای این محصول درج نگردیده است.</p>
+        <?php endif;?>
+    </section>
+    <section class="mt-12">
+        <h2 class="text-pink-400 font-bold text-2xl">سوالات متداول</h2>
+        <?php if($faq):?>
+        <p class="whitespace-pre-line">
+         <?php echo esc_html($faq);?>  
+        </p>
+        <?php else:?>
+            <p>برای این محصول سوالی درج نگردیده است.</p>
+        <?php endif;?>
+    </section>
+</div>
+<?php
+}
+add_action('woocommerce_after_single_product_summary','nafas_add_other_things',20);
+// *************************************************************
+//کاستوم فیلد برای مشخصات فنی محصول
+function nafas_product_technical_metabox(){
+    add_meta_box('product_technical','مشخصات فنی محصول','nafas_product_technical_callback','product','normal');
+
+}
+add_action('add_meta_boxes','nafas_product_technical_metabox');
+//تابعی که محتوای متاباکس رو ایجاد میکنه
+function nafas_product_technical_callback($post){
+    $technical=get_post_meta($post->ID,'product_technical',true);?>
+    <label for="product_technical">مشخصات فنی محصول</label>
+<textarea
+    id="product_technical"
+    name="product_technical"
+    rows="8"
+    style="width:100%;"
+><?php echo esc_textarea($technical); ?></textarea>
+<?php
+}
+//ذخیره در دیتابیس
+function nafas_save_product_technical($post_id) {
+
+    if (isset($_POST['product_technical'])) {
+
+        update_post_meta(
+            $post_id,
+            'product_technical',
+            sanitize_textarea_field($_POST['product_technical'])//امنیتی
+        );
+
+    }
+
+}
+
+add_action(
+    'save_post_product',
+    'nafas_save_product_technical'
+);
+// *************************************************************
+// *************************************************************
+//کاستوم فیلد برای مزایای محصول
+function nafas_product_benefits_metabox(){
+    add_meta_box('product_benefits','مزایای محصول','nafas_product_benefits_callback','product','normal');
+
+}
+add_action('add_meta_boxes','nafas_product_benefits_metabox');
+//تابعی که محتوای متاباکس رو ایجاد میکنه
+function nafas_product_benefits_callback($post){
+    $benefits=get_post_meta($post->ID,'product_benefits',true);?>
+    <label for="product_benefits">مزایا</label>
+<textarea
+    id="product_benefits"
+    name="product_benefits"
+    rows="8"
+    style="width:100%;"
+><?php echo esc_textarea($benefits); ?></textarea>
+<?php
+}
+//ذخیره در دیتابیس
+function nafas_save_product_benefits($post_id) {
+
+    if (isset($_POST['product_benefits'])) {
+
+        update_post_meta(
+            $post_id,
+            'product_benefits',
+            sanitize_textarea_field($_POST['product_benefits'])//امنیتی
+        );
+
+    }
+
+}
+
+add_action(
+    'save_post_product',
+    'nafas_save_product_benefits'
+);
+// *************************************************************
+// *************************************************************
+//کاستوم فیلد برای سوالات متداول
+function nafas_product_faq_metabox(){
+    add_meta_box('product_faq','سوالات متداول','nafas_product_faq_callback','product','normal');
+
+}
+add_action('add_meta_boxes','nafas_product_faq_metabox');
+//تابعی که محتوای متاباکس رو ایجاد میکنه
+function nafas_product_faq_callback($post){
+    $faq=get_post_meta($post->ID,'product_faq',true);?>
+    <label for="product_faq">سوالات پرتکرار</label>
+<textarea
+    id="product_faq"
+    name="product_faq"
+    rows="8"
+    style="width:100%;"
+><?php echo esc_textarea($faq); ?></textarea>
+<?php
+}
+//ذخیره در دیتابیس
+function nafas_save_product_faq($post_id) {
+
+    if (isset($_POST['product_faq'])) {
+
+        update_post_meta(
+            $post_id,
+            'product_faq',
+            sanitize_textarea_field($_POST['product_faq'])//امنیتی
+        );
+
+    }
+
+}
+
+add_action(
+    'save_post_product',
+    'nafas_save_product_faq'
+);
+// *************************************************************

@@ -1,5 +1,6 @@
 <?php
 defined('ABSPATH') || exit;
+// do_action('woocommerce_before_single_product');
 ?>
 
 <div
@@ -27,7 +28,7 @@ defined('ABSPATH') || exit;
             ?>
 
         </div>
-
+        <?php do_action('woocommerce_after_single_product_summary');?>
     </div>
 
 </div>
